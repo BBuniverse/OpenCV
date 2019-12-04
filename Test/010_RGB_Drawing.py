@@ -9,7 +9,7 @@ def nothing(x):
 # When pressing mouse turn to true
 drawing = False
 
-# True for rectangle, False for straight line, changed by press 'm'
+# True for rectangle, False for straight line, changed by pressing 'm'
 mode = True
 
 ix, iy = -1, -1

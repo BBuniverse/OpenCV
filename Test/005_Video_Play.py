@@ -7,5 +7,7 @@ while (capture.isOpened()):
     ret, frame = capture.read()
 
     cv2.imshow('frame', frame)
+
+    # The larger number the speed of playing slower
     if cv2.waitKey(1) == ord('q'):
         break
