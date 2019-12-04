@@ -1,10 +1,12 @@
 import cv2
 
-img = cv2.imread('Pictures/clouds.jpg')
+image = cv2.imread('Pictures/clouds.jpg')
 
-x = img[50:200, 50:200]
-img[100:250, 100:250] = x
+selected = image[50:200, 50:200]
+image[100:250, 100:250] = selected
 
-cv2.imshow('frame', img)
+cv2.namedWindow('Image')
+cv2.imshow('Image', image)
+
 cv2.waitKey()
 cv2.destroyAllWindows()

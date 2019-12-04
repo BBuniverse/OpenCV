@@ -1,5 +1,5 @@
-import numpy as np
 import cv2
+import numpy as np
 
 # When pressing mouse turn to true
 drawing = False
@@ -18,26 +18,26 @@ def draw(event, x, y, flags, param):
     elif event == cv2.EVENT_MOUSEMOVE and flags == cv2.EVENT_FLAG_LBUTTON:
         if drawing:
             if mode:
-                cv2.rectangle(img, (ix, iy), (x, y), (0, 255, 0), 2)
+                cv2.rectangle(image, (ix, iy), (x, y), (0, 255, 0), 2)
             else:
                 # drawing line by connective small circles
-                cv2.circle(img, (x, y), 3, (0, 0, 255), -1)
+                cv2.circle(image, (x, y), 3, (0, 0, 255), -1)
         # release mouse stop drawing
         elif event == cv2.EVENT_LBUTTONUP:
             drawing = False
 
 
-img = np.zeros((512, 512, 3), np.uint8)
+image = np.zeros((512, 512, 3), np.uint8)
 
 cv2.namedWindow('Drawing')
 cv2.namedWindow('Final')
 cv2.setMouseCallback('Drawing', draw)
 
 while 1:
-    cv2.imshow('Drawing', img)
+    cv2.imshow('Drawing', image)
     k = cv2.waitKey(1) & 0xFF
 
-    final = img.copy()
+    final = image.copy()
     cv2.imshow('Final', final)
 
     if k == ord('m'):

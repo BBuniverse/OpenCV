@@ -1,58 +1,58 @@
-import numpy as np
 import cv2
+import numpy as np
 from matplotlib import pyplot as plt
 
-img = cv2.imread('Pictures/gaussian_noise.bmp')
+image = cv2.imread('Pictures/gaussian_noise.bmp')
 
 plt.subplot(131)
-plt.imshow(img), plt.title('Original')
+plt.imshow(image), plt.title('Original', fontsize=8)
 plt.xticks([]), plt.yticks([])
 
 kernel = np.ones((5, 5), np.float32) / 25
 
-dst = cv2.filter2D(img, -1, kernel)
+dst = cv2.filter2D(image, -1, kernel)
 plt.subplot(132)
-plt.imshow(dst), plt.title('Averaging')
+plt.imshow(dst), plt.title('Averaging', fontsize=8)
 plt.xticks([]), plt.yticks([])
 
-gaussian = cv2.GaussianBlur(img, (5, 5), 0)
+gaussian = cv2.GaussianBlur(image, (5, 5), 0)
 plt.subplot(133)
-plt.imshow(gaussian), plt.title('Gaussian')
+plt.imshow(gaussian), plt.title('Gaussian', fontsize=8)
 plt.xticks([]), plt.yticks([])
 plt.show()
 
 # Compare Blur with Median
-img = cv2.imread('Pictures/salt_noise.bmp')
+image = cv2.imread('Pictures/salt_noise.bmp')
 
 plt.subplot(131)
-plt.imshow(img), plt.title('Original')
+plt.imshow(image), plt.title('Original', fontsize=8)
 plt.xticks([]), plt.yticks([])
 
-blur = cv2.blur(img, (5, 5))
+blur = cv2.blur(image, (5, 5))
 plt.subplot(132)
-plt.imshow(blur), plt.title('Blurred')
+plt.imshow(blur), plt.title('Blurred', fontsize=8)
 plt.xticks([]), plt.yticks([])
 
-median = cv2.medianBlur(img, 5)
+median = cv2.medianBlur(image, 5)
 plt.subplot(133)
-plt.imshow(median), plt.title('Median')
+plt.imshow(median), plt.title('Median', fontsize=8)
 plt.xticks([]), plt.yticks([])
 plt.show()
 
 # Compare Gaussian with Bilateral
-img = cv2.imread('Pictures/otsu.jpg')
+image = cv2.imread('Pictures/otsu.jpg')
 
 plt.subplot(131)
-plt.imshow(img), plt.title('Original')
+plt.imshow(image), plt.title('Original', fontsize=8)
 plt.xticks([]), plt.yticks([])
 
-gaussian = cv2.GaussianBlur(img, (5, 5), 0)
+gaussian = cv2.GaussianBlur(image, (5, 5), 0)
 plt.subplot(132)
-plt.imshow(gaussian), plt.title('Gaussian')
+plt.imshow(gaussian), plt.title('Gaussian', fontsize=8)
 plt.xticks([]), plt.yticks([])
 
-bilateral = cv2.bilateralFilter(img, 9, 75, 75)
+bilateral = cv2.bilateralFilter(image, 9, 75, 75)
 plt.subplot(133)
-plt.imshow(bilateral), plt.title('Bilateral')
+plt.imshow(bilateral), plt.title('Bilateral', fontsize=8)
 plt.xticks([]), plt.yticks([])
 plt.show()

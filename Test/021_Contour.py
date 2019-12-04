@@ -11,6 +11,7 @@ gray = cv2.cvtColor(img, cv2.COLOR_GRAY2BGR)
 
 cv2.drawContours(gray, contours, -1, (0, 0, 255), 2)
 
+cv2.namedWindow('Contour')
 cv2.imshow('Contour', gray)
 
 cv2.waitKey()

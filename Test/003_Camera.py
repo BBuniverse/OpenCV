@@ -1,13 +1,15 @@
 import cv2
 
-cap = cv2.VideoCapture(0)
+capture = cv2.VideoCapture(0)
+
+cv2.namedWindow('Video')
 
 while True:
-    ret, frame = cap.read()
+    ret, video = capture.read()
 
-    cv2.imshow('frame', frame)
+    cv2.imshow('Video', video)
     if cv2.waitKey(20) & 0xFF == ord('q'):
         break
 
-cap.release()
+capture.release()
 cv2.destroyAllWindows()

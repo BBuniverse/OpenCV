@@ -1,18 +1,18 @@
 import cv2
 from matplotlib import pyplot as plt
 
-img = cv2.imread('Pictures/otsu.jpg', 0)
+image = cv2.imread('Pictures/otsu.jpg', 0)
 
-ret, threshold = cv2.threshold(img, 127, 255, cv2.THRESH_BINARY)
-retotsu, otsu = cv2.threshold(img, 0, 255, cv2.THRESH_BINARY + cv2.THRESH_OTSU)
+ret, threshold = cv2.threshold(image, 127, 255, cv2.THRESH_BINARY)
+ret_otsu, otsu = cv2.threshold(image, 0, 255, cv2.THRESH_BINARY + cv2.THRESH_OTSU)
 
 # (5, 5) is the size of gaussian blur and 0 is standard deviation
-gaussianblur = cv2.GaussianBlur(img, (5, 5), 0)
-retotsublur, otsublur = cv2.threshold(gaussianblur, 0, 255, cv2.THRESH_BINARY + cv2.THRESH_OTSU)
+gaussian_blur = cv2.GaussianBlur(image, (5, 5), 0)
+ret_otsu_blur, otsu_blur = cv2.threshold(gaussian_blur, 0, 255, cv2.THRESH_BINARY + cv2.THRESH_OTSU)
 
-images = [img, 0, threshold,
-          img, 0, otsu,
-          gaussianblur, 0, otsublur]
+images = [image, 0, threshold,
+          image, 0, otsu,
+          gaussian_blur, 0, otsu_blur]
 titles = ['Original Noisy Image', 'Histogram', 'Global Thresholding (v=127)',
           'Original Noisy Image', 'Histogram', "Otsu's Thresholding",
           'Gaussian filtered Image', 'Histogram', "Otsu's Thresholding"]

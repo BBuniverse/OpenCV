@@ -1,6 +1,6 @@
 import cv2
-from matplotlib import pyplot as plt
 import numpy as np
+from matplotlib import pyplot as plt
 
 img = cv2.imread('Pictures/hist.jpg')
 img = img[:, :, 2]

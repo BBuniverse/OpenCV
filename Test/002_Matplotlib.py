@@ -1,9 +1,8 @@
 import cv2
-
 from matplotlib import pyplot as plt
 
-img = cv2.imread("Pictures/clouds.jpg", 0)
-plt.imshow(img, cmap='gray', interpolation='bicubic')
+image = cv2.imread("Pictures/clouds.jpg")
+plt.imshow(image)
 plt.xticks([]), plt.yticks([])
 
 plt.show()
