@@ -1,6 +1,6 @@
 import cv2
 
-img = cv2.imread('clouds.jpg')
+img = cv2.imread('Pictures/clouds.jpg')
 
 b, g, r = cv2.split(img)
 

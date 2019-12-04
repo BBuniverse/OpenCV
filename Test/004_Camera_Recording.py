@@ -4,8 +4,8 @@ import os
 capture = cv2.VideoCapture(0)
 
 fourcc = cv2.VideoWriter_fourcc(*'MJPG')
-os.remove('004_Camera_Recording.avi')
-outfile = cv2.VideoWriter('004_Camera_Recording.avi', fourcc, 25., (400, 705))
+os.remove('Pictures/004_Camera_Recording.avi')
+outfile = cv2.VideoWriter('Pictures/004_Camera_Recording.avi', fourcc, 25., (400, 705))
 print('Start recording')
 
 while (capture.isOpened()):
