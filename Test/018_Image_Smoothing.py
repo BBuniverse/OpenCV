@@ -9,8 +9,8 @@ plt.imshow(image), plt.title('Original', fontsize=8)
 plt.xticks([]), plt.yticks([])
 
 kernel = np.ones((5, 5), np.float32) / 25
-
-dst = cv2.filter2D(image, -1, kernel)
+# kernel = np.array([[0, -1, 0], [-1, 4, -1], [0, -1, 0]], np.float32)
+dst = cv2.filter2D(image, -1, kernel=kernel)
 plt.subplot(132)
 plt.imshow(dst), plt.title('Averaging', fontsize=8)
 plt.xticks([]), plt.yticks([])
@@ -28,11 +28,13 @@ plt.subplot(131)
 plt.imshow(image), plt.title('Original', fontsize=8)
 plt.xticks([]), plt.yticks([])
 
+# Remove the noise
 blur = cv2.blur(image, (5, 5))
 plt.subplot(132)
 plt.imshow(blur), plt.title('Blurred', fontsize=8)
 plt.xticks([]), plt.yticks([])
 
+# Remove High contrast noise
 median = cv2.medianBlur(image, 5)
 plt.subplot(133)
 plt.imshow(median), plt.title('Median', fontsize=8)
