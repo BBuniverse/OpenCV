@@ -53,7 +53,8 @@ plt.subplot(132)
 plt.imshow(gaussian), plt.title('Gaussian', fontsize=8)
 plt.xticks([]), plt.yticks([])
 
-bilateral = cv2.bilateralFilter(image, 9, 75, 75)
+#                                    distance
+bilateral = cv2.bilateralFilter(image, 0, 100, 15)
 plt.subplot(133)
 plt.imshow(bilateral), plt.title('Bilateral', fontsize=8)
 plt.xticks([]), plt.yticks([])

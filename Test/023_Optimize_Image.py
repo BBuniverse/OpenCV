@@ -1,40 +1,33 @@
 import cv2
-import numpy as np
 from matplotlib import pyplot as plt
 
-img = cv2.imread('Pictures/hist.jpg')
-img = img[:, :, 2]
-equ = cv2.equalizeHist(img)
-clahe = cv2.createCLAHE(clipLimit=2.0, tileGridSize=(8, 8))
-cl1 = clahe.apply(img)
 
-plt.subplot(231)
-plt.imshow(img), plt.title('Origin', fontsize=8)
-plt.xticks([]), plt.yticks([])
+def Image_Hist(image):
+    color = ('blue', 'green', 'red')
+    for i, color in enumerate(color):
+        hist = cv2.calcHist([image], [i], None, [256], [0, 256])
+        plt.plot(hist, color=color)
+    plt.show()
 
-hist = np.bincount(img.ravel(), minlength=256)
-plt.subplot(234)
-plt.plot(hist)
-plt.xticks([]), plt.yticks([])
 
-plt.subplot(232)
-plt.imshow(equ), plt.title('Equ', fontsize=8)
-plt.xticks([]), plt.yticks([])
+def Equal_Hist(image):
+    gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+    dst = cv2.equalizeHist(gray)
+    cv2.imshow('Equal Hist', dst)
 
-hist = np.bincount(equ.ravel(), minlength=256)
-plt.subplot(235)
-plt.plot(hist)
-plt.xticks([]), plt.yticks([])
 
-plt.subplot(233)
-plt.imshow(cl1), plt.title('Clane', fontsize=8)
-plt.xticks([]), plt.yticks([])
+def Clahe(image):
+    gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+    clahe = cv2.createCLAHE(clipLimit=5.0, tileGridSize=(10, 10))
+    clahe = clahe.apply(gray)
+    clahe = cv2.cvtColor(clahe, cv2.COLOR_GRAY2BGR)
+    cv2.imshow('Clahe', clahe)
 
-hist = np.bincount(cl1.ravel(), minlength=256)
-plt.subplot(236)
-plt.plot(hist)
-plt.xticks([]), plt.yticks([])
 
-plt.show()
+image = cv2.imread('Pictures/clouds.jpg')
+cv2.imshow('Image', image)
+Clahe(image)
+Equal_Hist(image)
+
 cv2.waitKey()
 cv2.destroyAllWindows()
