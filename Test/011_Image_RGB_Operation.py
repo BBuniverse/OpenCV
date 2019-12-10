@@ -10,8 +10,8 @@ cv2.imshow("r", r)
 
 merge = cv2.merge((g, b, r))
 
-cv2.namedWindow('Merge')
-cv2.imshow('Merge', merge)
+cv2.namedWindow('Merge GBR')
+cv2.imshow('Merge GBR', merge)
 
 cv2.waitKey()
 cv2.destroyAllWindows()

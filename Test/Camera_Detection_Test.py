@@ -36,7 +36,9 @@ while True:
     sample = video[50:100, 50:100]
     CalcBack(video, sample)
     cv2.imshow('x', video)
-    if cv2.waitKey(20) & 0xFF == ord('q'):
+
+    c = cv2.waitKey(10)
+    if c == 27:
         break
 
 cap.release()

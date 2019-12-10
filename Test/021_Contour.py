@@ -1,18 +1,23 @@
 import cv2
 
-img = cv2.imread('Pictures/handwriting.jpg')
-img = img[:, :, 2]
 
-ret, threshold = cv2.threshold(img, 0, 255, cv2.THRESH_BINARY_INV + cv2.THRESH_OTSU)
+def Find_Contour(Image):
+    Image = cv2.GaussianBlur(Image, (3, 3), 0)
+    gray = cv2.cvtColor(Image, cv2.COLOR_BGR2GRAY)
+    ret, binary = cv2.threshold(gray, 0, 255, cv2.THRESH_BINARY_INV | cv2.THRESH_OTSU)
+    cv2.imshow('Binary Image', binary)
 
-contours, hierarchy = cv2.findContours(threshold, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
+    contours, heriachy = cv2.findContours(binary, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
 
-gray = cv2.cvtColor(img, cv2.COLOR_GRAY2BGR)
+    for i, contour in enumerate(contours):
+        cv2.drawContours(Image, contours, i, (0, 0, 255), 2)
 
-cv2.drawContours(gray, contours, -1, (0, 0, 255), 2)
+    cv2.imshow('Contour Find', Image)
 
-cv2.namedWindow('Contour')
-cv2.imshow('Contour', gray)
+
+image = cv2.imread('Pictures/coins2.jpg')
+
+Find_Contour(image)
 
 cv2.waitKey()
 cv2.destroyAllWindows()
